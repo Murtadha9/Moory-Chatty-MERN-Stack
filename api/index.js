@@ -6,8 +6,9 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.route.js'
 import messageRoutes from './routes/message.routes.js'
 import userRoutes from './routes/user.routes.js'
+import { app, server } from './socket/socket.js';
 
-const app = express();
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -20,7 +21,7 @@ mongoose.connect(process.env.MONGO_URL)
 }).catch((err)=>{
     console.log(err)
 })
-app.listen(3000,()=>{
+server.listen(3000,()=>{
     console.log('server is running on port 3000');
 })
 
